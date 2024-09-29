@@ -68,8 +68,10 @@ public class UserController {
     public Map<String, Object> saveUser( User user) {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("school_id", user.getSchoolId())
+//                .eq("password", user.getPassword())
                 .eq("student_id", user.getStudentId());
         User one = userService.getOne(wrapper);
+        System.out.println(user);
         if (one == null) {
             userService.save(user);
             return message.message(true, "注册成功", "", null);
